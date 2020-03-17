@@ -8,6 +8,7 @@ import { HomeComponent } from './home/home.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { LoginComponent } from './login/login.component';
 import { ReposComponent } from './repos/repos.component';
+import { MainComponent } from './main/main.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { ReposComponent } from './repos/repos.component';
     HomeComponent,
     NavbarComponent,
     LoginComponent,
-    ReposComponent
+    ReposComponent,
+    MainComponent
   ],
   imports: [
     BrowserModule,

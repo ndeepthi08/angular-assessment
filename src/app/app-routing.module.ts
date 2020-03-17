@@ -3,6 +3,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { ReposComponent } from './repos/repos.component';
+import { MainComponent } from './main/main.component';
+import {NavbarComponent} from './navbar/navbar.component';
 
 
 
@@ -14,9 +16,17 @@ const routes: Routes = [
   {
     path: 'login', component: LoginComponent
   },
-  { path: 'home/:id', component: HomeComponent },
-  { path: 'repos', component: ReposComponent }
-];
+  {
+    path: 'user/:id', component: NavbarComponent,
+    children: [{ path: '', redirectTo: 'home', pathMatch: 'full' }, 
+    { path: 'home', component: HomeComponent }, 
+    { path: 'repos', component: ReposComponent },
+    {path: 'following', component: MainComponent}
+    ]
+  },
+
+]
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
   onSubmit(userID) {
     this.userService.getUser(userID).subscribe(data => {
       this.userInfo = data;
-      this.router.navigate(['/home', this.userInfo.UserData['login']]);
+      this.router.navigate(['/user', this.userInfo.UserData['login']]);
     }, err => {
       console.log(err)
     })

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { observable } from 'rxjs';
 import { UserService } from '../user.service';
-import { ActivatedRoute } from "@angular/router";
+import { Router, ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: 'app-home',
@@ -11,8 +11,8 @@ import { ActivatedRoute } from "@angular/router";
 export class HomeComponent implements OnInit {
   userName: any;
   userInfo: any;
-  constructor(private route: ActivatedRoute, private userService: UserService) {
-    this.route.params.subscribe(params => this.userName = params.id);
+  constructor(private router: Router,private route: ActivatedRoute, private userService: UserService) {
+    this.route.parent.params.subscribe(params => this.userName = params.id);
   }
 
   ngOnInit() {

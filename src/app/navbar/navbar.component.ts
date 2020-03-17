@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user.service';
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: 'app-navbar',
@@ -8,9 +9,18 @@ import { UserService } from '../user.service';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(private userService: UserService,) { }
+  userName: any;
+  userInfo: any;
+  constructor(private route: ActivatedRoute, private userService: UserService) {
+    this.route.params.subscribe(params => this.userName = params.id);
+  }
 
   ngOnInit() {
+    this.userService.getUser(this.userName).subscribe(data => {
+      this.userInfo = data;
+    }, err => {
+      console.log(err)
+    })
   }
 
 }
